@@ -1,4 +1,13 @@
-.App-logo {
-  height: 15vmin;
-  pointer-events: hand;
+a{
+  text-decoration:none;
+  outline:0;
+  border:0;
+  cursor:pointer;
+}
+
+a img {
+  border: 0;
+}
+.logo {
+  height: 80px;
 }
