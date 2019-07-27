@@ -29,22 +29,22 @@ const content = [
 
 const Content = () => (
     <div>
-    {content.map(item => (
-    <div key={item.title} className="col-md-4 py-5 bg-light d-inline-block">
-        <div className="card mb-4 box-shadow">
-            <div className="card-header">
-            {item.title}
-          </div>
-            <div className="card-body">
-                <h6 className="card-subtitle mb-2 text-muted">{item.subtitle}</h6>
-                <p className="card-text">{item.blogcontent}</p>
-                <div className="d-flex justify-content-between align-items-center">
-                    <small className="text-muted">{item.date}</small>
+        {content.map(item => (
+            <div key={item.title} className="col-md-4 bg-light d-inline-block">
+                <div className="card mb-4 box-shadow">
+                    <div className="card-header">
+                        {item.title}
+                    </div>
+                    <div className="card-body">
+                        <h6 className="card-subtitle mb-2 text-muted">{item.subtitle}</h6>
+                        <p className="card-text">{item.blogcontent}</p>
+                        <div className="d-flex justify-content-between align-items-center">
+                            <small className="text-muted">{item.date}</small>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-    </div>
-    ))}
+        ))}
     </div>
 );
 
