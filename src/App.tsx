@@ -16,7 +16,6 @@ class App extends React.Component {
         <main role="main">
         <Description/>
         <Content/>
-        <CreateBlogPost/>
         </main>
         <footer>
           <Footer/>
