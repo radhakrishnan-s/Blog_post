@@ -1,4 +1,5 @@
 import * as React from 'react';
+import Delete from './Delete.jpg'
 
 const content = [
     {
@@ -38,8 +39,13 @@ const Content = () => (
                     <div className="card-body">
                         <h6 className="card-subtitle mb-2 text-muted">{item.subtitle}</h6>
                         <p className="card-text">{item.blogcontent}</p>
-                        <div className="d-flex justify-content-between align-items-center">
-                            <small className="text-muted">{item.date}</small>
+                        <div className="d-flex mb-3">
+                            <div className="mr-auto p-2">
+                                <small className="text-muted">{item.date}</small>
+                            </div>
+                            <div className="p-2">
+                                <a className="text-muted"><img src={Delete} className="delete" alt="Delete"/></a>
+                            </div>
                         </div>
                     </div>
                 </div>

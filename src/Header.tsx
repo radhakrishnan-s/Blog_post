@@ -7,7 +7,6 @@ export default class Header extends React.Component<any, any> {
         this.state = { modal: false, title: '', category: '', tag: '', content: '', linkname: 'Add new blogs' };
         this.toggle = this.toggle.bind(this);
     }
-
     toggle() {
         this.setState({
             modal: !this.state.modal
