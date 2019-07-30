@@ -42,3 +42,12 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
 To learn React, check out the [React documentation](https://reactjs.org/).
+
+Welcome to the Bloggers for Life!!!!
+
+Here is a simple walk through of the site
+-The main view has the list of blogs which already existed
+-If you want to have a look on the existing content, you need to click on the particular content and the content will be displayed.
+-New blog content can be added through the Add new blog link
+-The create new blog window have fields like Title, Category, Hash tag, Content.
+-After saving the content the blogs will get added to the dashboard.
