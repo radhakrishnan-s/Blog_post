@@ -1,22 +1,14 @@
 import * as React from 'react';
 
-interface description {
-    description_heading?: string;
-    description?: string;
+export default class Description extends React.Component < any, any > {
+    render() {
+        return (
+            <section className="jumbotron text-center">
+                <div className="container">
+                    <h3 className="jumbotron-heading">Bloggers for Life</h3>
+                    <p className="lead text-muted">Connecting ideas and people!!!</p>
+                </div>
+            </section>
+        );
+    }
 }
-
-const Description: React.FC<description> = (props: description) => (
-    <section className="jumbotron text-center">
-        <div className="container">
-            <h3 className="jumbotron-heading">{props.description_heading}</h3>
-            <p className="lead text-muted">{props.description}</p>
-        </div>
-    </section>
-);
-
-Description.defaultProps = {
-    description_heading: 'Bloggers for Life',
-    description: 'Connecting ideas and people!!!'
-};
-
-export default Description;

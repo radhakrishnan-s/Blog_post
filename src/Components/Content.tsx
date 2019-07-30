@@ -24,7 +24,7 @@ export default class Content extends React.Component<any, any> {
                                 {item.title}
                             </div>
                             <div className="card-body">
-                                <h6 className="card-subtitle mb-2 text-muted">{item.subtitle}</h6>
+                                <h6 className="card-subtitle mb-2 text-muted">{item.category}</h6>
                                 <p className="card-text">{item.blogcontent}</p>
                                 <div className="d-flex mb-3">
                                     <div className="mr-auto p-2">
@@ -43,7 +43,7 @@ export default class Content extends React.Component<any, any> {
                                     <label>Title:</label>
                                     <input type="text" className="form-control" value={item.title} />
                                     <label>Category:</label>
-                                    <input type="text" className="form-control" value={item.subtitle} />
+                                    <input type="text" className="form-control" value={item.category} />
                                     <label>Content:</label>
                                     <textarea className="form-control" id="message-text">{item.blogcontent}</textarea>
                                     <label>Date Created:</label>

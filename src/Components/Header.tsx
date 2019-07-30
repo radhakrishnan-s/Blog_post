@@ -4,7 +4,7 @@ import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 export default class Header extends React.Component<any, any> {
     constructor(props: any) {
         super(props);
-        this.state = { modal: false, title: '', category: '', tag: '', content: '', linkname: 'Add new blog' };
+        this.state = { modal: false, title: '', category: '', content: '', linkname: 'Add new blog' };
         this.toggle = this.toggle.bind(this);
     }
     toggle() {
@@ -30,8 +30,6 @@ export default class Header extends React.Component<any, any> {
                             <label>Blog Title:</label>
                             <input type="text" className="form-control" required/>
                             <label>Blog Category:</label>
-                            <input type="text" className="form-control" required/>
-                            <label>Blog Tag:</label>
                             <input type="text" className="form-control" required/>
                             <label>Blog Content:</label>
                             <textarea className="form-control" id="message-text" required></textarea>
