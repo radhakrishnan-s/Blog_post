@@ -1,4 +1,4 @@
-##Welcome to the Bloggers for Life!!!!
+## Welcome to the Bloggers for Life!!!!
 
 Here is a simple walk through of the site
 -The main view has the list of blogs which already existed
