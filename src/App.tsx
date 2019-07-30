@@ -1,9 +1,9 @@
 import * as React from 'react';
-import Header from './Header';
-import Description from './Description';
-import Content from './Content';
-import Footer from './Footer';
-import './css/App.css';
+import Header from './Components/Header';
+import Description from './Components/Description';
+import Content from './Components/Content';
+import Footer from './Components/Footer';
+import './Styles/App.css';
 
 class App extends React.Component {
   public render() {

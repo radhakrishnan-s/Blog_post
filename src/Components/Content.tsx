@@ -1,5 +1,5 @@
 import * as React from 'react';
-import Delete from './Images/Delete.jpg';
+import Delete from '../Images/Delete.jpg'
 import contentdata from './ContentData';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 

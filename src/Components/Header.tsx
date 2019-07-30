@@ -28,13 +28,13 @@ export default class Header extends React.Component<any, any> {
                         <ModalHeader>Create a Blog post</ModalHeader>
                         <ModalBody>
                             <label>Blog Title:</label>
-                            <input type="text" className="form-control" />
+                            <input type="text" className="form-control" required/>
                             <label>Blog Category:</label>
-                            <input type="text" className="form-control" />
+                            <input type="text" className="form-control" required/>
                             <label>Blog Tag:</label>
-                            <input type="text" className="form-control" />
+                            <input type="text" className="form-control" required/>
                             <label>Blog Content:</label>
-                            <textarea className="form-control" id="message-text"></textarea>
+                            <textarea className="form-control" id="message-text" required></textarea>
                         </ModalBody>
                         <ModalFooter>
                             <input type="submit" value="Submit" color="primary" className="btn btn-primary" />
