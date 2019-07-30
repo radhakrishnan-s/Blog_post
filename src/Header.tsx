@@ -15,7 +15,7 @@ export default class Header extends React.Component<any, any> {
     render() {
         return (
             <div>
-                <nav className="navbar navbar-expand-sm bg-dark navbar-dark box-shadow">
+                <nav className="navbar navbar-expand-sm bg-dark navbar-dark fixed-top box-shadow">
                     <a className="navbar-brand text-white">Bloggers</a>
                     <div className="navbar-collapse">
                         <div className="navbar-nav ml-auto">

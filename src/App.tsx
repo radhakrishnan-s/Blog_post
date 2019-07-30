@@ -3,21 +3,21 @@ import Header from './Header';
 import Description from './Description';
 import Content from './Content';
 import Footer from './Footer';
-import './App.css';
+import './css/App.css';
 
 class App extends React.Component {
   public render() {
     return (
       <div className="App">
         <header className="App-header">
-          <Header/>
+          <Header />
         </header>
         <main role="main">
-        <Description/>
-        <Content/>
+          <Description />
+          <Content />
         </main>
         <footer>
-          <Footer/>
+          <Footer />
         </footer>
       </div>
     );
