@@ -4,7 +4,7 @@ import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 export default class Header extends React.Component<any, any> {
     constructor(props: any) {
         super(props);
-        this.state = { modal: false, title: '', category: '', content: '', linkname: 'Add new blog' };
+        this.state = { modal: false, linkname: 'Add new blog' };
         this.toggle = this.toggle.bind(this);
     }
     toggle() {
