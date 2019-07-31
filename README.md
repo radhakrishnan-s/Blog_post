@@ -1,10 +1,15 @@
 ## Welcome to the Bloggers for Life!!!!
 
 Here is a simple walk through of the site
+
 -The main view has the list of blogs which already existed
+
 -If you want to have a look on the existing content, you need to click on the particular content and the content will be displayed.
+
 -New blog content can be added through the Add new blog link
--The create new blog window have fields like Title, Category, Hash tag, Content.
+
+-The create new blog window have fields like Title, Category, Content.
+
 -After saving the content the blogs will get added to the dashboard.
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
