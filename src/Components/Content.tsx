@@ -1,7 +1,7 @@
 import * as React from 'react';
-import Delete from '../Images/Delete.jpg'
-import contentdata from './ContentData';
+import * as data from './ContentData.json';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
+import Delete from '../Images/Delete.jpg';
 
 export default class Content extends React.Component<any, any> {
     constructor(props: any) {
@@ -26,9 +26,9 @@ export default class Content extends React.Component<any, any> {
      }
     render() {
         return (
-            <div className="container-fluid">
-                {contentdata.map(item => (
-                    <a key={item.title} className="col-md-4 bg-light d-inline-block" data-title={item.title} data-blogcontent={item.blogcontent} data-category={item.category} data-date={item.date} onClick={this.handleClick}>
+            <div className="container-fluid" id="content_container">
+                {data.contentdata.map(item => (
+                    <div key={item.title} className="hover col-md-4 bg-light d-inline-block" data-title={item.title} data-blogcontent={item.blogcontent} data-category={item.category} data-date={item.date} onClick={this.handleClick}>
                         <div className="card mb-4 box-shadow">
                             <div className="card-header">
                                 {item.title}
@@ -41,7 +41,7 @@ export default class Content extends React.Component<any, any> {
                                         <small className="text-muted">{item.date}</small>
                                     </div>
                                     <div className="p-2">
-                                        <a className="text-muted"><img src={Delete} className="delete" alt="Delete" /></a>
+                                        <div className="hover text-muted"><img src={Delete} className="delete" alt="Delete" /></div>
                                     </div>
                                 </div>
                             </div>
@@ -64,7 +64,7 @@ export default class Content extends React.Component<any, any> {
                                 </ModalFooter>
                             </form>
                         </Modal>
-                    </a>
+                    </div>
                 ))}
             </div>
         );
