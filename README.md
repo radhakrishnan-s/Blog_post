@@ -12,6 +12,8 @@ Here is a simple walk through of the site
 
 -After saving the content the blogs will get added to the dashboard.
 
+-Existing blog can be deleted by clicking on the delete icon at the bottom of the post.
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
