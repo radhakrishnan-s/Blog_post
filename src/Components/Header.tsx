@@ -1,7 +1,9 @@
 import * as React from 'react';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import ReactDOM from 'react-dom';
-import Content from './Content' 
+import Delete from '../Images/Delete.jpg';
+import handleClick from './Content'
+
 export default class Header extends React.Component<any, any> {
     constructor(props: any) {
         super(props);
@@ -10,7 +12,6 @@ export default class Header extends React.Component<any, any> {
         this.getTitle = this.getTitle.bind(this);
         this.getCategory = this.getCategory.bind(this);
         this.getContent = this.getContent.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
     }
     toggle() {
         this.setState({
@@ -19,7 +20,6 @@ export default class Header extends React.Component<any, any> {
     }
     getTitle(event: any) {
         this.setState({ title: event.target.value });
-        console.log(this.state.title);
     }
     getCategory(event: any) {
         this.setState({ category: event.target.value });
@@ -27,12 +27,27 @@ export default class Header extends React.Component<any, any> {
     getContent(event: any) {
         this.setState({ content: event.target.value });
     }
-    handleSubmit(event: any) {
-        event.preventDefault();    
-        var thisIsMyCopy = (<p>copy copy copy <strong>strong copy</strong></p>);
-
-        ReactDOM.render(<div className="content">{thisIsMyCopy}</div>, document.getElementById('content_container'));  
-        this.toggle();    
+    handleSubmit = () => {
+        ReactDOM.render(<div className="hover col-md-4 bg-light d-inline-block" data-title={this.state.title} data-blogcontent={this.state.blogcontent} data-category={this.state.category} data-date={this.state.date}>
+        <div className="card mb-4 box-shadow">
+            <div className="card-header">
+                {this.state.title}
+            </div>
+            <div className="card-body">
+                <h6 className="card-subtitle mb-2 text-muted" >{this.state.category}</h6>
+                <p className="card-text">{this.state.content}</p>
+                <div className="d-flex mb-3">
+                    <div className="mr-auto p-2">
+                        <small className="text-muted">{this.state.date}</small>
+                    </div>
+                    <div className="p-2">
+                        <div className="hover text-muted"><img src={Delete} className="delete" alt="Delete" /></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>, document.getElementById('content_container'));
+    this.toggle();
     }
     render() {
         return (
@@ -60,7 +75,7 @@ export default class Header extends React.Component<any, any> {
                             <input type="submit" value="Submit" color="primary" className="btn btn-primary" />
                             <Button color="danger" onClick={this.toggle}>Cancel</Button>
                         </ModalFooter>
-                    </form>
+                    </form>                
                 </Modal>
             </div>
         );

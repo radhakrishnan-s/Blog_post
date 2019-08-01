@@ -17,16 +17,16 @@ export default class Content extends React.Component<any, any> {
     }
     handleClick(event: any) {
         this.toggle();
-         this.setState({ 
-             title: event.currentTarget.dataset.title ,
-             category: event.currentTarget.dataset.category,
-             content: event.currentTarget.dataset.blogcontent , 
-             date: event.currentTarget.dataset.date,
-         });
-     }
+        this.setState({
+            title: event.currentTarget.dataset.title,
+            category: event.currentTarget.dataset.category,
+            content: event.currentTarget.dataset.blogcontent,
+            date: event.currentTarget.dataset.date,
+        });
+    }
     render() {
         return (
-            <div className="container-fluid" id="content_container">
+            <div className="container-fluid">
                 {data.contentdata.map(item => (
                     <div key={item.title} className="hover col-md-4 bg-light d-inline-block" data-title={item.title} data-blogcontent={item.blogcontent} data-category={item.category} data-date={item.date} onClick={this.handleClick}>
                         <div className="card mb-4 box-shadow">
@@ -51,13 +51,13 @@ export default class Content extends React.Component<any, any> {
                                 <ModalHeader>Blog post</ModalHeader>
                                 <ModalBody>
                                     <label>Title</label>
-                                    <input type="text" className="form-control" value={this.state.title} readOnly/>
+                                    <input type="text" className="form-control" value={this.state.title} readOnly />
                                     <label>Category:</label>
-                                    <input type="text" className="form-control" value={this.state.category} readOnly/>
+                                    <input type="text" className="form-control" value={this.state.category} readOnly />
                                     <label>Content:</label>
                                     <textarea className="form-control" id="message-text" readOnly>{this.state.content}</textarea>
                                     <label>Date Created:</label>
-                                    <input type="text" className="form-control" value={this.state.date} readOnly/>
+                                    <input type="text" className="form-control" value={this.state.date} readOnly />
                                 </ModalBody>
                                 <ModalFooter>
                                     <Button color="danger" onClick={this.toggle}>Close</Button>
@@ -66,6 +66,9 @@ export default class Content extends React.Component<any, any> {
                         </Modal>
                     </div>
                 ))}
+                <div id="content_container">
+                {this.props.children}
+            </div>
             </div>
         );
     }
