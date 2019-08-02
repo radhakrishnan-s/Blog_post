@@ -2,7 +2,6 @@ import * as React from 'react';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import ReactDOM from 'react-dom';
 import Delete from '../Images/Delete.jpg';
-import handleClick from './Content'
 
 export default class Header extends React.Component<any, any> {
     constructor(props: any) {
@@ -27,8 +26,9 @@ export default class Header extends React.Component<any, any> {
     getContent(event: any) {
         this.setState({ content: event.target.value });
     }
-    handleSubmit = () => {
-        ReactDOM.render(<div className="hover col-md-4 bg-light d-inline-block" data-title={this.state.title} data-blogcontent={this.state.blogcontent} data-category={this.state.category} data-date={this.state.date}>
+    saveBlog = (event: any) => {
+        event.preventDefault();   
+        ReactDOM.render(<div className="hover col-md-4 bg-light d-inline-block" data-title={event.target.title} data-blogcontent={event.target.content} data-category={event.target.category} data-date={event.target.date}>
         <div className="card mb-4 box-shadow">
             <div className="card-header">
                 {this.state.title}
@@ -53,7 +53,7 @@ export default class Header extends React.Component<any, any> {
         return (
             <div>
                 <nav className="navbar navbar-expand-sm bg-dark navbar-dark fixed-top box-shadow">
-                    <a className="navbar-brand text-white">Bloggers</a>
+                    <div className="navbar-brand text-white">Bloggers</div>
                     <div className="navbar-collapse">
                         <div className="navbar-nav ml-auto">
                             <div className="hover navbar-text text-white" onClick={this.toggle}>Add new blog</div>
@@ -61,7 +61,7 @@ export default class Header extends React.Component<any, any> {
                     </div>
                 </nav>
                 <Modal isOpen={this.state.modal}>
-                    <form onSubmit={this.handleSubmit}>
+                    <form onSubmit={this.saveBlog}>
                         <ModalHeader>Create a Blog post</ModalHeader>
                         <ModalBody>
                             <label>Blog Title:</label>
