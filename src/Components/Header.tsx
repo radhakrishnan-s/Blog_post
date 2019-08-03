@@ -2,6 +2,9 @@ import * as React from 'react';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import ReactDOM from 'react-dom';
 import Delete from '../Images/Delete.jpg';
+import AppComponent from './appcompo';
+import Content from './Content';
+// import React, { forwardRef, useRef, useImperativeHandle } from 'react';
 
 export default class Header extends React.Component<any, any> {
     constructor(props: any) {
@@ -28,27 +31,31 @@ export default class Header extends React.Component<any, any> {
     }
     saveBlog = (event: any) => {
         event.preventDefault();   
-        ReactDOM.render(<div className="hover col-md-4 bg-light d-inline-block" data-title={event.target.title} data-blogcontent={event.target.content} data-category={event.target.category} data-date={event.target.date}>
-        <div className="card mb-4 box-shadow">
-            <div className="card-header">
-                {this.state.title}
-            </div>
-            <div className="card-body">
-                <h6 className="card-subtitle mb-2 text-muted" >{this.state.category}</h6>
-                <p className="card-text">{this.state.content}</p>
-                <div className="d-flex mb-3">
-                    <div className="mr-auto p-2">
-                        <small className="text-muted">{this.state.date}</small>
-                    </div>
-                    <div className="p-2">
-                        <div className="hover text-muted"><img src={Delete} className="delete" alt="Delete" /></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>, document.getElementById('content_container'));
+    //     ReactDOM.render(<div className="hover col-md-4 bg-light d-inline-block" data-title={event.target.title} data-blogcontent={event.target.content} data-category={event.target.category} data-date={event.target.date}>
+    //     <div className="card mb-4 box-shadow">
+    //         <div className="card-header">
+    //             {this.state.title}
+    //         </div>
+    //         <div className="card-body">
+    //             <h6 className="card-subtitle mb-2 text-muted" >{this.state.category}</h6>
+    //             <p className="card-text">{this.state.content}</p>
+    //             <div className="d-flex mb-3">
+    //                 <div className="mr-auto p-2">
+    //                     <small className="text-muted">{this.state.date}</small>
+    //                 </div>
+    //                 <div className="p-2">
+    //                     <div className="hover text-muted"><img src={Delete} className="delete" alt="Delete" /></div>
+    //                 </div>
+    //             </div>
+    //         </div>
+    //     </div>
+    // </div>, document.getElementById('content_container'));
     this.toggle();
     }
+     onClicked = () => {
+        // this.child.method(); // do stuff
+        //this.props.onAddChild();
+       }
     render() {
         return (
             <div>
@@ -60,22 +67,28 @@ export default class Header extends React.Component<any, any> {
                         </div>
                     </div>
                 </nav>
-                <Modal isOpen={this.state.modal}>
+                <Modal isOpen={this.state.modal} ref="Content">
                     <form onSubmit={this.saveBlog}>
                         <ModalHeader>Create a Blog post</ModalHeader>
                         <ModalBody>
                             <label>Blog Title:</label>
-                            <input type="text" className="form-control" value={this.state.title} onChange={this.getTitle} required />
+                            <input type="text" className="form-control" onChange={this.getTitle} required />
                             <label>Blog Category:</label>
-                            <input type="text" className="form-control" value={this.state.category} onChange={this.getCategory} required />
+                            <input type="text" className="form-control" onChange={this.getCategory} required />
                             <label>Blog Content:</label>
-                            <textarea className="form-control" value={this.state.value} onChange={this.getContent} required></textarea>
+                            <textarea className="form-control" onChange={this.getContent} required></textarea>
                         </ModalBody>
                         <ModalFooter>
                             <input type="submit" value="Submit" color="primary" className="btn btn-primary" />
                             <Button color="danger" onClick={this.toggle}>Cancel</Button>
                         </ModalFooter>
-                    </form>                
+                    </form>
+                    {/* <AppComponent></AppComponent>                 */}
+                    {/* <div id="children-pane">
+                        <p><a href="#" onClick={Content.prototype.onAddChild}>Add Another Child Component</a></p>
+                    </div> */}
+                    {/* <Content onRef={ref => (this.content = ref)} /> */}
+                    <a href="#" onClick={this.onClicked}>child.method</a>
                 </Modal>
             </div>
         );
