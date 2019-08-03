@@ -6,7 +6,7 @@ import * as data from './ContentData.json';
 export default class Header extends React.Component<any, any> {
     constructor(props: any) {
         super(props);
-        this.state = { blogcount: 0, readOnly: false, hidden: false, submithidden: false, required: false, modal: false, blogtitle: '', title: '', category: '', content: '', date: '' };
+        this.state = { blogcount: 0, readOnly: false, hidden: false, submithidden: false, required: false, modal: false, blogtitle: '', title: '', category: '', content: '', date:'' };
         this.toggle = this.toggle.bind(this);
         this.getTitle = this.getTitle.bind(this);
         this.getCategory = this.getCategory.bind(this);
@@ -39,7 +39,7 @@ export default class Header extends React.Component<any, any> {
         this.setState({
             title: event.currentTarget.dataset.title,
             category: event.currentTarget.dataset.category,
-            content: event.currentTarget.dataset.blogcontent,
+            content: event.currentTarget.dataset.content,
             date: event.currentTarget.dataset.date,
             readOnly: true,
             required: false,
@@ -50,11 +50,14 @@ export default class Header extends React.Component<any, any> {
 
     addBlogPost(event: any) {
         this.toggle();
+        var Date_year = new Date().getFullYear();
+        var Date_month = new Date().getMonth();
+        var Date_date = new Date().getDate();
         this.setState({
             title: '',
             category: '',
             content: '',
-            date: '',
+            date: Date_date + '-' + Date_month + '-' + Date_year,
             readOnly: false,
             required: true,
             hidden: true,
@@ -62,7 +65,7 @@ export default class Header extends React.Component<any, any> {
         });
     }
 
-    saveBlogPost(){
+    saveBlogPost() {
         this.setState({
             blogcount: this.state.blogcount + 1
         });
@@ -73,17 +76,18 @@ export default class Header extends React.Component<any, any> {
         const newBlog = [];
 
         for (var i = 0; i < this.state.blogcount; i++) {
-            newBlog.push(<div className="hover col-md-4 bg-light d-inline-block">
+            newBlog.push(<div className="col-md-4 bg-light d-inline-block">
                 <div className="card mb-4 box-shadow">
                     <div className="card-header">
-                    {this.state.title}
-                 </div>
+                        {this.state.title}
+                    </div>
                     <div className="card-body">
-                        <h6 className="card-subtitle mb-2 text-muted" >{this.state.category}</h6>
+                        <h5 className="card-subtitle mb-2 text-muted" >{this.state.category}</h5>
                         <p className="card-text">{this.state.content}</p>
+                        <h6 className="hover" onClick={this.viewBlogPost} data-title={this.state.title} data-content={this.state.content} data-category={this.state.category} data-date={this.state.date}>View the content...</h6>
                         <div className="d-flex mb-3">
                             <div className="mr-auto p-2">
-                                <small className="text-muted">test4</small>
+                                <small className="text-muted">{this.state.date}</small>
                             </div>
                             <div className="p-2">
                                 <div className="hover text-muted"><img src={Delete} className="delete" alt="Delete" /></div>
@@ -111,8 +115,8 @@ export default class Header extends React.Component<any, any> {
                             </div>
                             <div className="card-body">
                                 <h5 className="card-subtitle mb-2 text-muted" >{item.category}</h5>
-                                <p className="card-text">{item.blogcontent}</p>
-                                <h6 className="hover" onClick={this.viewBlogPost} data-title={item.title} data-blogcontent={item.blogcontent} data-category={item.category} data-date={item.date}>View the content...</h6>
+                                <p className="card-text">{item.content}</p>
+                                <h6 className="hover" onClick={this.viewBlogPost} data-title={item.title} data-content={item.content} data-category={item.category} data-date={item.date}>View the content...</h6>
                                 <div className="d-flex mb-3">
                                     <div className="mr-auto p-2">
                                         <small className="text-muted">{item.date}</small>
@@ -141,7 +145,7 @@ export default class Header extends React.Component<any, any> {
                                     <Button color="danger" onClick={this.toggle}>Close</Button>
                                 </ModalFooter>
                             </form>
-                            <a href="#" onClick={this.saveBlogPost}>Add Another Child Component</a>
+                            {/* <a href="#" onClick={this.saveBlogPost}>Add Another Child Component</a> */}
                         </Modal>
                     </div>
                 ))}

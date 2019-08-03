@@ -22,7 +22,7 @@ export default class Content extends React.Component<any, any> {
         this.setState({
             title: event.currentTarget.dataset.title,
             category: event.currentTarget.dataset.category,
-            content: event.currentTarget.dataset.blogcontent,
+            content: event.currentTarget.dataset.content,
             date: event.currentTarget.dataset.date,
         });
     }
@@ -74,8 +74,8 @@ export default class Content extends React.Component<any, any> {
                             </div>
                             <div className="card-body">
                                 <h5 className="card-subtitle mb-2 text-muted" >{item.category}</h5>
-                                <p className="card-text">{item.blogcontent}</p>
-                                <h6 className="hover" onClick={this.handleClick} data-title={item.title} data-blogcontent={item.blogcontent} data-category={item.category} data-date={item.date}>View the content...</h6>
+                                <p className="card-text">{item.content}</p>
+                                <h6 className="hover" onClick={this.handleClick} data-title={item.title} data-content={item.content} data-category={item.category} data-date={item.date}>View the content...</h6>
                                 <div className="d-flex mb-3">
                                     <div className="mr-auto p-2">
                                         <small className="text-muted">{item.date}</small>
