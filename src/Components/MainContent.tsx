@@ -14,6 +14,7 @@ export default class Header extends React.Component<any, any> {
         this.viewBlogPost = this.viewBlogPost.bind(this);
         this.saveBlogPost = this.saveBlogPost.bind(this);
         this.addBlogPost = this.addBlogPost.bind(this);
+        this.deleteBlog = this.deleteBlog.bind(this);
     }
 
     toggle() {
@@ -72,6 +73,15 @@ export default class Header extends React.Component<any, any> {
         this.toggle();
     }
 
+    deleteBlog(){
+        this.setState({
+            title: '',
+            category: '',
+            content: '',
+            date: ''
+        });
+    }
+
     render() {
         const newBlog = [];
 
@@ -122,7 +132,7 @@ export default class Header extends React.Component<any, any> {
                                         <small className="text-muted">{item.date}</small>
                                     </div>
                                     <div className="p-2">
-                                        <div className="hover text-muted"><img src={Delete} className="delete" alt="Delete" /></div>
+                                        <div className="hover text-muted" onClick={this.deleteBlog}><img src={Delete} className="delete" alt="Delete"/></div>
                                     </div>
                                 </div>
                             </div>
