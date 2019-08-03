@@ -1,5 +1,5 @@
 import * as React from 'react';
-import Header from './Components/Header';
+import MainContent from './Components/MainContent';
 import Description from './Components/Description';
 import Content from './Components/Content';
 import Footer from './Components/Footer';
@@ -10,11 +10,11 @@ class App extends React.Component {
     return (
       <div className="App">
         <header className="App-header">
-          <Header />
+          <Description />
         </header>
         <main role="main">
-          <Description />
-          <Content />
+          {/* <Content /> */}
+          <MainContent />
         </main>
         <footer>
           <Footer />

@@ -2,7 +2,7 @@ import * as React from 'react';
 import * as data from './ContentData.json';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import Delete from '../Images/Delete.jpg';
-import Header from './Header'
+import MainContent from './MainContent'
 
 export default class Content extends React.Component<any, any> {
     constructor(props: any) {
@@ -26,19 +26,18 @@ export default class Content extends React.Component<any, any> {
             date: event.currentTarget.dataset.date,
         });
     }
-    // componentDidMount() {
-    //     this.props.onRef(this)
-    // }
-    // componentWillUnmount() {
-    //     this.props.onRef(undefined)
-    // }
-
+    //    blog: Header = new Header(this.props);
     onAddChild = () => {
         //event.preventDefault();
+        // this.setState({
+        //     numChildren: this.state.numChildren + 1
+        // });
+        this.toggle();
+        console.log("test");
         this.setState({
             numChildren: this.state.numChildren + 1
         });
-        this.toggle();
+        // Header.prototype.props.children
     }
 
     render() {
