@@ -6,7 +6,7 @@ import * as data from './ContentData.json';
 export default class MainContent extends React.Component<any, any> {
     constructor(props: any) {
         super(props);
-        this.state = { blogcount: 0, readOnly: false, hidden: false, submithidden: false, required: false, modal: false, blogtitle: '', title: '', category: '', content: '', date: '' , addTitle:'', addCategory: '', addContent: '', addDate: '' };
+        this.state = { blogcount: 0, readOnly: false, hidden: false, submithidden: false, required: false, modal: false, title: '', category: '', content: '', date: '' , addTitle:'', addCategory: '', addContent: '', addDate: '', content_index:'' };
         this.toggle = this.toggle.bind(this);
         this.getTitle = this.getTitle.bind(this);
         this.getCategory = this.getCategory.bind(this);
@@ -55,6 +55,9 @@ export default class MainContent extends React.Component<any, any> {
         var Date_month = new Date().getMonth();
         var Date_date = new Date().getDate();
         this.setState({
+            title: '',
+            category: '',
+            content: '',
             date: Date_date + '-' + Date_month + '-' + Date_year,
             readOnly: false,
             required: true,
@@ -70,23 +73,23 @@ export default class MainContent extends React.Component<any, any> {
             addTitle: this.state.title,
             addCategory: this.state.category, 
             addContent: this.state.content, 
-            addDate: this.state.date
+            addDate: this.state.date,
+            content_index: data.contentdata.length + 1
         });
         this.toggle();
-        return false;
     }
     
     deleteBlog(event: any) {
-        var blog:any;
-        blog = document.getElementById("contentex");
-        blog.remove();
+         var blog:any;
+         blog = document.getElementById("content_" + event.currentTarget.dataset.delete);
+         blog.remove();
     }
 
     render() {
         const newBlog = [];
 
         for (var i = 0; i < this.state.blogcount; i++) {
-            newBlog.push(<div className="col-md-4 bg-light d-inline-block" id={"element_"+i}>
+            newBlog.push(<div className="col-md-4 bg-light d-inline-block" id={"content_"+this.state.content_index}>
                 <div className="card mb-4 box-shadow">
                     <div className="card-header">
                         {this.state.addTitle}
@@ -100,7 +103,7 @@ export default class MainContent extends React.Component<any, any> {
                                 <small className="text-muted">{this.state.addDate}</small>
                             </div>
                             <div className="p-2">
-                                <div className="hover text-muted" onClick={this.deleteBlog}><img src={Delete} className="delete" alt="Delete" /></div>
+                                <div className="hover text-muted" onClick={this.deleteBlog} data-delete = {this.state.content_index}><img src={Delete} className="delete" alt="Delete" /></div>
                             </div>
                         </div>
                     </div>
@@ -118,7 +121,7 @@ export default class MainContent extends React.Component<any, any> {
                     </div>
                 </nav>
                 {data.contentdata.map(item => (
-                    <div key={item.title} className="col-md-4 bg-light d-inline-block" id="container">
+                    <div key={item.title} className="col-md-4 bg-light d-inline-block" id={"content_"+item.index}>
                         <div className="card mb-4 box-shadow">
                             <div className="card-header">
                                 {item.title}
@@ -132,7 +135,7 @@ export default class MainContent extends React.Component<any, any> {
                                         <small className="text-muted">{item.date}</small>
                                     </div>
                                     <div className="p-2">
-                                        <div className="hover text-muted" onClick={this.deleteBlog}><img src={Delete} className="delete" alt="Delete" /></div>
+                                        <div className="hover text-muted" onClick={this.deleteBlog} data-delete = {item.index}><img src={Delete} className="delete" alt="Delete" /></div>
                                     </div>
                                 </div>
                             </div>
