@@ -3,10 +3,10 @@ import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import Delete from '../Images/Delete.jpg';
 import * as data from './ContentData.json';
 
-export default class Header extends React.Component<any, any> {
+export default class MainContent extends React.Component<any, any> {
     constructor(props: any) {
         super(props);
-        this.state = { blogcount: 0, readOnly: false, hidden: false, submithidden: false, required: false, modal: false, blogtitle: '', title: '', category: '', content: '', date:'' };
+        this.state = { blogcount: 0, readOnly: false, hidden: false, submithidden: false, required: false, modal: false, blogtitle: '', title: '', category: '', content: '', date: '' , addTitle:'', addCategory: '', addContent: '', addDate: '' };
         this.toggle = this.toggle.bind(this);
         this.getTitle = this.getTitle.bind(this);
         this.getCategory = this.getCategory.bind(this);
@@ -49,15 +49,12 @@ export default class Header extends React.Component<any, any> {
         });
     }
 
-    addBlogPost(event: any) {
+    addBlogPost() {
         this.toggle();
         var Date_year = new Date().getFullYear();
         var Date_month = new Date().getMonth();
         var Date_date = new Date().getDate();
         this.setState({
-            title: '',
-            category: '',
-            content: '',
             date: Date_date + '-' + Date_month + '-' + Date_year,
             readOnly: false,
             required: true,
@@ -66,41 +63,44 @@ export default class Header extends React.Component<any, any> {
         });
     }
 
-    saveBlogPost() {
+    saveBlogPost(event:any) {
+        event.preventDefault();
         this.setState({
-            blogcount: this.state.blogcount + 1
+            blogcount: this.state.blogcount + 1,
+            addTitle: this.state.title,
+            addCategory: this.state.category, 
+            addContent: this.state.content, 
+            addDate: this.state.date
         });
         this.toggle();
+        return false;
     }
-
-    deleteBlog(){
-        this.setState({
-            title: '',
-            category: '',
-            content: '',
-            date: ''
-        });
+    
+    deleteBlog(event: any) {
+        var blog:any;
+        blog = document.getElementById("contentex");
+        blog.remove();
     }
 
     render() {
         const newBlog = [];
 
         for (var i = 0; i < this.state.blogcount; i++) {
-            newBlog.push(<div className="col-md-4 bg-light d-inline-block">
+            newBlog.push(<div className="col-md-4 bg-light d-inline-block" id={"element_"+i}>
                 <div className="card mb-4 box-shadow">
                     <div className="card-header">
-                        {this.state.title}
+                        {this.state.addTitle}
                     </div>
                     <div className="card-body">
-                        <h5 className="card-subtitle mb-2 text-muted" >{this.state.category}</h5>
-                        <p className="card-text">{this.state.content}</p>
-                        <h6 className="hover" onClick={this.viewBlogPost} data-title={this.state.title} data-content={this.state.content} data-category={this.state.category} data-date={this.state.date}>View the content...</h6>
+                        <h5 className="card-subtitle mb-2 text-muted" >{this.state.addCategory}</h5>
+                        <p className="card-text">{this.state.addContent}</p>
+                        <h6 className="hover" onClick={this.viewBlogPost} data-title={this.state.addTitle} data-content={this.state.addContent} data-category={this.state.addCategory} data-date={this.state.addDate}>View the content...</h6>
                         <div className="d-flex mb-3">
                             <div className="mr-auto p-2">
-                                <small className="text-muted">{this.state.date}</small>
+                                <small className="text-muted">{this.state.addDate}</small>
                             </div>
                             <div className="p-2">
-                                <div className="hover text-muted"><img src={Delete} className="delete" alt="Delete" /></div>
+                                <div className="hover text-muted" onClick={this.deleteBlog}><img src={Delete} className="delete" alt="Delete" /></div>
                             </div>
                         </div>
                     </div>
@@ -118,7 +118,7 @@ export default class Header extends React.Component<any, any> {
                     </div>
                 </nav>
                 {data.contentdata.map(item => (
-                    <div key={item.title} className="col-md-4 bg-light d-inline-block">
+                    <div key={item.title} className="col-md-4 bg-light d-inline-block" id="container">
                         <div className="card mb-4 box-shadow">
                             <div className="card-header">
                                 {item.title}
@@ -132,7 +132,7 @@ export default class Header extends React.Component<any, any> {
                                         <small className="text-muted">{item.date}</small>
                                     </div>
                                     <div className="p-2">
-                                        <div className="hover text-muted" onClick={this.deleteBlog}><img src={Delete} className="delete" alt="Delete"/></div>
+                                        <div className="hover text-muted" onClick={this.deleteBlog}><img src={Delete} className="delete" alt="Delete" /></div>
                                     </div>
                                 </div>
                             </div>
